@@ -1,0 +1,28 @@
+.manga{
+    background: #f4f4f4;
+    width: 40%;
+    height: 250px;
+    position: relative;
+    float: left;
+    margin: 3px 0 3px 0;
+}
+
+.manga img {
+    width: 214px;
+    height: 205px;
+}
+
+.manga-options {
+    width: 270px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.manga figure{
+    width: 190px;
+}
+
+span[title]{
+    cursor: pointer;
+}
