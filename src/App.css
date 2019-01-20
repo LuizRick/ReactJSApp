@@ -1,3 +1,7 @@
+
+body{
+  overflow-x: hidden;
+}
 .App {
   text-align: center;
 }
@@ -25,4 +29,25 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
+@media (display-mode: fullscreen) {
+  body {
+    margin: 0;
+    background: #222;
+    overflow-x: hidden;
+  }
+
+  .fullscreenbtn{
+    background: #333;
+    display: none !important;
+  }
+
+  .TopBar-root-1{
+    display: none !important;
+  }
 }

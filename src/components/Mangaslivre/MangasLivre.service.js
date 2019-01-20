@@ -38,8 +38,9 @@ export default class MangarLivreService {
 
     static async getMangaPages(chapter) {
         let data;
+        let releases = Object.keys(chapter.releases);
         await axios.post(`${Config.API_SERVER}/Home/MangaLivre/`, {
-            url: `https://mangalivre.com/${chapter.releases._scan129.link}`,
+            url: `https://mangalivre.com/${chapter.releases[releases[0]].link}`,
             RequestType: 1,
             BodyRequest: {},
             isAjax: false
@@ -48,7 +49,7 @@ export default class MangarLivreService {
                 let dataHtml = response.data;
                 let doc = document.implementation.createHTMLDocument();
                 doc.documentElement.innerHTML = dataHtml;
-                let token = new URL(doc.getElementsByTagName("script")[18].src).searchParams.get("token");
+                let token = new URL(doc.getElementsByTagName("script")[23].src).searchParams.get("token");
                 data = await this.getMangaPagesUlr(token,chapter);
             } catch (ex) {
                 alert("ooops erro na aplicação na hora de fazer hack nos manga pages");
@@ -63,10 +64,13 @@ export default class MangarLivreService {
 
     static async getMangaPagesUlr(token,chapter){
         let data;
+        let releases = Object.keys(chapter.releases);
         await axios.post(`${Config.API_SERVER}/Home/MangaLivre/`, {
-            url: `https://mangalivre.com/leitor/pages.json?key=${token}&id_release=${chapter.releases._scan129.id_release}`,
+            url: `https://mangalivre.com/leitor/pages/${chapter.releases[releases[0]].id_release}.json?key=${token}`,
             RequestType: 1,
-            BodyRequest: {},
+            BodyRequest: {
+
+            },
         }).then((response) => {
             data = JSON.parse(response.data);
         }).catch( err => console.log(err));

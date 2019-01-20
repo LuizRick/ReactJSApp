@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <Router>
         <Root>
-          <TopBar/>
+          <TopBar class="topbar"/>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/lastmangachapter" component={LastMangaChapter} />
