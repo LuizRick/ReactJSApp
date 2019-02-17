@@ -49,7 +49,7 @@ export default class MangarLivreService {
                 let dataHtml = response.data;
                 let doc = document.implementation.createHTMLDocument();
                 doc.documentElement.innerHTML = dataHtml;
-                let token = new URL(doc.getElementsByTagName("script")[23].src).searchParams.get("token");
+                let token = MangarLivreService.getTokenfromColletion(doc.getElementsByTagName("script"));
                 data = await this.getMangaPagesUlr(token,chapter);
             } catch (ex) {
                 alert("ooops erro na aplicação na hora de fazer hack nos manga pages");
@@ -75,5 +75,18 @@ export default class MangarLivreService {
             data = JSON.parse(response.data);
         }).catch( err => console.log(err));
         return data;
+    }
+
+    static getTokenfromColletion(collection){
+        for(let i in collection){
+            try{
+                let token = new URL(collection[i].src).searchParams.get("token");
+                if(token != null){
+                    return token;
+                }
+            }catch(ex){
+                continue;
+            }
+        }
     }
 }

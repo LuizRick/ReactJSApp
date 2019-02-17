@@ -47,7 +47,7 @@ body{
     display: none !important;
   }
 
-  .TopBar-root-1{
+  #topbar{
     display: none !important;
   }
 }

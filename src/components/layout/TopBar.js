@@ -9,7 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
 import LeftmenuItems from "./LeftMenuItems";
 
-const styles = {
+const styles = theme =>  ({
     root: {
         flexGrow: 1,
     },
@@ -26,11 +26,16 @@ const styles = {
     fullList: {
         width: 'auto',
     },
-};
+});
 
 class TopBar extends Component {
     state = {
         showDrawer: false
+    }
+
+    constructor(props){
+        super(props);
+        console.log(props);
     }
 
     toggleDrawer = () => {
@@ -42,7 +47,7 @@ class TopBar extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className={classes.root}>
+            <div className={classes.root} id="topbar">
                 <Drawer open={this.state.showDrawer} onClose={this.toggleDrawer}>
                     <LeftmenuItems />
                 </Drawer>
@@ -61,5 +66,6 @@ class TopBar extends Component {
         )
     }
 };
+
 
 export default withStyles(styles)(TopBar);
